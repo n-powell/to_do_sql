@@ -43,4 +43,17 @@ describe(List) do
     end
   end
 
+  describe("#sort") do
+    it("orders lists by due date") do
+      list1 = List.new({:name => "Epicodus stuff", :id => nil, :due_date => "2017-05-05 00:00:00"})
+      list1.save()
+      list2 = List.new({:name => "Epicodus stuff", :id => nil, :due_date => "2017-05-02 00:00:00"})
+      list2.save()
+      list3 = List.new({:name => "Epicodus stuff", :id => nil, :due_date => "2017-05-03 00:00:00"})
+      list3.save()
+      ordered_list = list2, list3, list1
+      expect(List.sort()).to(eq(ordered_list))
+    end
+  end
+
 end

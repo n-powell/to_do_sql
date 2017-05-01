@@ -24,7 +24,7 @@ class List
     @id = result.first().fetch("id").to_i()
   end
 
-  define_method (:sort) do
+  define_singleton_method(:sort) do
     returned_lists = DB.exec("SELECT * FROM lists ORDER BY due_date;")
     lists = []
     returned_lists.each() do |list|
